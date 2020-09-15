@@ -1,0 +1,91 @@
+/*
+Copyright 2016 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+article {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 50em;
+  width: 90vw;
+  border-bottom: 1px solid #ddd;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  margin: 3vh 0 3vh 0;
+  text-align: center;
+}
+
+/* TODO 2 - set the image max-width 
+The value in max-width represents a percentage of the containing element, in this case the article element.
+
+Note: You could also specify the max-width in terms of the viewport width using vw units (for example, 100vw). In this case we are using a percentage value to keep the images the same width as the text.
+*/
+img {
+  max-width: 100%;
+}
+
+/* TODO 4.1 - display the SFO image at 50vw 
+Because the CSS is parsed after the HTML at runtime, the browser has no way to know what the final display size of the image will be when it fetches it. Unless we tell it otherwise, the browser assumes the images will be displayed at 100% of the viewport width and fetches the images based on this. We need a way to tell the browser beforehand if the images will be displayed at a different size.
+*/
+img#sfo {
+  transition: width 0.5s;
+  max-width: 50vw;
+}
+
+/* TODO 5.1 - add a media query 
+The media query tests the viewport width of the screen, and applies the CSS if the viewport is less than 700px wide.
+*/
+@media screen and (max-width: 700px) {
+  img#sfo {
+    max-width: 90vw;
+    width: 90vw;
+  }
+}
+
+figcaption {
+  color: #bb021e;
+  font-family: 'Roboto condensed', sans-serif;
+  padding: 2em 0;
+  text-align: center;
+}
+
+figure {
+  margin: 1em 0 1em 0;
+}
+
+h1 {
+  color: #bb021e;
+  font-family: 'Roboto condensed', sans-serif;
+  font-size: 6vw;
+  font-weight: 500;
+  margin: 0 0 1em 0;
+  padding: 0 0 1em 0;
+  border-bottom: 1px solid #ddd;
+}
+
+p {
+  color: #444;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.6em;
+  margin: 0 auto 1em auto;
+  text-align: justify;
+  max-width: 50em;
+}
