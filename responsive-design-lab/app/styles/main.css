@@ -1,0 +1,70 @@
+/* main.css */
+
+.no-flexbox .container {
+  background: #eee;
+  overflow: auto;
+}
+
+.no-flexbox .container .col {
+    width: 27%;
+    padding: 30px 3.15% 0;
+    float: left;
+}
+
+/* TODO 3 - style the page */
+
+/* TODO 4 - use media query 
+To make sure that the text is readable we use a media query when the browser's width becomes 48rem (768 pixels at browser's default font size or 48 times the default font size in the user's browser). See When to use Em vs Rem for a good explanation of why rem is a good choice for relative units. When the media query is triggered we change the layout from three columns to one column by changing the width of each of the three divs to fill the page.*/ 
+
+@media screen and (max-width: 48rem) {
+  .no-flexbox .container .col {
+    width: 95%;
+  }
+}
+
+
+/* TODO 5.2 - use flexbox 
+The first rule defines the container div as the flex container. This enables a flex context for all its direct children. We are mixing old and new syntax for including Flexbox to get broader support (see For more information for details).
+
+The second rule uses the .col class to create our equal width flex children. Setting the first argument of the flex property to 1 for all divs with class col divides the remaining space evenly between them. This is more convenient than calculating and setting the relative width ourselves.
+*/
+.flexbox .container {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  background: #eee;  
+  overflow: auto;
+}
+
+.flexbox .container .col {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Use the nth-child pseudo-class to set the relative widths of the first two columns to 1 and the third to 1.5. You must use the flex property to set the relative widths for each column
+*/
+.flexbox .container .col:nth-child(1) {
+  flex: 1;
+}
+
+.flexbox .container .col:nth-child(2) {
+  flex: 1;
+}
+
+.flexbox .container .col:nth-child(3) {
+ flex: 1.5;
+}
+
+/* TODO 5.4 - use media query with Flexbox 
+When the media query is triggered we change the layout from three-column to one-column by setting the flex-flow property to column. This accomplishes the same result as the media query we added in step 5. Flexbox provides lots of other properties like flex-flow that let you easily structure, re-order, and justify your content so that it responds well in any context.
+*/
+@media screen and (max-width: 48rem) {
+  .flexbox .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+
